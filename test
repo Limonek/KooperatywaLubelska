@@ -1,0 +1,22 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 7633-703E
+
+ Directory of C:\Users\Katarzyna\Documents\kooperatywaLubelska
+
+16.03.2019  10:37    <DIR>          .
+16.03.2019  10:37    <DIR>          ..
+13.03.2019  16:35               147 .gitignore
+13.03.2019  16:39    <DIR>          .gradle
+16.03.2019  10:25    <DIR>          .idea
+13.03.2019  17:10    <DIR>          app
+13.03.2019  16:35               573 build.gradle
+13.03.2019  16:35    <DIR>          gradle
+13.03.2019  16:39               739 gradle.properties
+13.03.2019  16:35             5ÿ296 gradlew
+13.03.2019  16:35             2ÿ260 gradlew.bat
+13.03.2019  16:40               873 kooperatywaLubelska.iml
+13.03.2019  16:35               462 local.properties
+13.03.2019  16:35                16 settings.gradle
+16.03.2019  10:37                 0 test
+               9 File(s)         10ÿ366 bytes
+               6 Dir(s)  15ÿ505ÿ031ÿ168 bytes free
