@@ -24,7 +24,10 @@
         </activity>
         <activity android:name=".EventInformationActivity">
         </activity>
-
+        <activity android:name=".AdministratorMainActivity">
+        </activity>
+        <activity android:name=".SupplierMainActivity">
+        </activity>
 
     </application>
 
