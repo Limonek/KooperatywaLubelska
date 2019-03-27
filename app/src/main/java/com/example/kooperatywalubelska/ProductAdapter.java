@@ -35,7 +35,7 @@ public ProductAdapter(Context applicationContext, String[] listaProduktów) {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
     view  = inflater.inflate(R.layout.element_list_product_activity, null);
-        TextView produkt = (TextView)view.findViewById(R.id.NazwaProduktuText);
+        TextView produkt = view.findViewById(R.id.NazwaProduktuText);
         produkt.setText(listaProduktów[i]);
     return view;
     }

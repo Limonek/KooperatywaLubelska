@@ -10,7 +10,7 @@ public class WydarzeniaListaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_list_activity);
-        tabHost=(FragmentTabHost)findViewById(R.id.tabHost);
+        tabHost=findViewById(R.id.tabHost);
         tabHost.setup(this,getSupportFragmentManager(), android.R.id.tabcontent);
         tabHost.addTab(tabHost.newTabSpec("wszystkie").setIndicator("Wszystkie"), WszystkieWydarzeniaActivity.class,null);
         tabHost.addTab(tabHost.newTabSpec("zadeklarowane").setIndicator("Zadeklarowane"), ZadeklarowaneWydarzeniaActivity.class,null);

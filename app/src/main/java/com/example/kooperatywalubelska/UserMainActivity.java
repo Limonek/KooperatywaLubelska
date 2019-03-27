@@ -14,9 +14,9 @@ public class UserMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_main_activity);
-        zamowienia = (Button) findViewById(R.id.zamowieniaButton);
-        wydarzenia = (Button) findViewById(R.id.wydarzeniaButton);
-        listaProduktow = (Button) findViewById(R.id.listaProduktowButton);
+        zamowienia = findViewById(R.id.zamowieniaButton);
+        wydarzenia = findViewById(R.id.wydarzeniaButton);
+        listaProduktow = findViewById(R.id.listaProduktowButton);
 
         zamowienia.setOnClickListener(new View.OnClickListener() {
             @Override
