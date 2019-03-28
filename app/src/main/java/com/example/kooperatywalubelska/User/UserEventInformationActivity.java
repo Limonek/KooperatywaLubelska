@@ -1,10 +1,13 @@
-package com.example.kooperatywalubelska;
+package com.example.kooperatywalubelska.User;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
-public class EventInformationActivity extends AppCompatActivity {
+import com.example.kooperatywalubelska.R;
+
+public class UserEventInformationActivity extends AppCompatActivity {
     TextView nameEvent;
     TextView dateEvent;
     TextView discriptionEvent;
@@ -17,6 +20,9 @@ public class EventInformationActivity extends AppCompatActivity {
         nameEvent = findViewById(R.id.nameEventText);
         dateEvent = findViewById(R.id.dataEventText);
         discriptionEvent = findViewById(R.id.discriptionEventText);
+        nameEvent.setVisibility(View.VISIBLE);
+        dateEvent.setVisibility(View.VISIBLE);
+        discriptionEvent.setVisibility(View.VISIBLE);
         name = getIntent().getStringExtra("name");
         data = getIntent().getStringExtra("date");
         discription = getIntent().getStringExtra("discription");
