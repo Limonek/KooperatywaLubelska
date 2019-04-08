@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="nav_view">
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_main_activity_administrator"
+        android:icon="@drawable/ic_admin"
+        android:title="Tryb administratora" />
+    <item
+        android:id="@+id/nav_main_activity_user"
+        android:icon="@drawable/ic_user"
+        android:title="Tryb użytkownika" />
+    <item
+        android:id="@+id/nav_product"
+        android:icon="@drawable/ic_product"
+        android:title="Produkty" />
+</group>
+
+<item android:title="Poziom dostepu">
+<menu>
+    <item
+        android:id="@+id/nav_user"
+        android:title="Użytkownik" />
+    <item
+        android:id="@+id/nav_supplier"
+        android:title="Dostawca" />
+    <item
+        android:id="@+id/nav_administrator"
+        android:title="Administrator" />
+</menu>
+</item>
+
+
+</menu>

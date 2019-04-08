@@ -1,9 +1,13 @@
 package com.example.kooperatywalubelska.Administrator;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -12,30 +16,31 @@ import android.widget.TextView;
 import com.example.kooperatywalubelska.Adapters.ProductAdapter;
 import com.example.kooperatywalubelska.R;
 
-public class AdministratorUserListActivity extends AppCompatActivity {
+public class AdministratorUserListActivity extends Fragment {
     TextView typListy;
     private ListView lista ;
     String[] uzytkownicy = {"AdamMajewski", "NowyDostawca", "MiMaciejewski", "MichalB", "WojtekP", "PawelWojtowicz", "MarekMa", "KasiaCath", "JuliaWronska"};
     Button addProductButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_activity);
-        typListy = findViewById(R.id.typListy);
+    public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.list_activity,container, false);
+        typListy = v.findViewById(R.id.typListy);
         typListy.setText("Użytkownicy");
-        addProductButton=findViewById(R.id.zapiszButton);
+        addProductButton=v.findViewById(R.id.zapiszButton);
         addProductButton.setText("Dodaj nowego użytkownika");
 
-        lista = findViewById(R.id.lista);
-        ProductAdapter productAdapter = new ProductAdapter(getApplicationContext(),uzytkownicy);
+        lista = v.findViewById(R.id.lista);
+        ProductAdapter productAdapter = new ProductAdapter(getContext(),uzytkownicy);
         lista.setAdapter(productAdapter);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(),AdministratorUserInformationActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new AdministratorUserInformationActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });
@@ -43,9 +48,12 @@ public class AdministratorUserListActivity extends AppCompatActivity {
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),AdministratorUserAddActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new AdministratorUserAddActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
+        return v;
     }
 }

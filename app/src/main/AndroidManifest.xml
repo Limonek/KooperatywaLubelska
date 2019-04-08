@@ -9,63 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".User.UserMainActivity">
+        <activity android:name=".User.UserMain"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".Supplier.SupplierMain"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Administrator.AdministratorMain"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".User.UserEventListActivity">
         </activity>
         <activity android:name=".User.UserProductFragmentsActivity">
         </activity>
-        <activity android:name=".User.UserProductInformationActivity">
-        </activity>
-        <activity android:name=".User.UserEventInformationActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorMainActivity">
-        </activity>
-        <activity android:name=".Supplier.SupplierMainActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorProductListActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorProductAddActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorUserListActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorEventListActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorEventInformationActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorEventInformationEditActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorEventAddActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministrationProductInformationActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorEditProductInformationActivity">
-        </activity>
-        <activity android:name=".User.UserPersonalInformationActivity">
-        </activity>
-        <activity android:name=".User.UserPersonalInformationEditActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorUserInformationActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorUserInformationEditActivity">
-        </activity>
-        <activity android:name=".Administrator.AdministratorUserAddActivity">
-        </activity>
-        <activity android:name=".Supplier.SupplierMyProductListActivity">
-        </activity>
-        <activity android:name=".Supplier.SupplierProductInformationEditActivity">
-        </activity>
-        <activity android:name=".Supplier.SupplierCurrencyOrderActivity">
-        </activity>
-        <activity android:name=".Supplier.SupplierAllOrdersActivity">
-        </activity>
-
 
 
     </application>

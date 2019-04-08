@@ -1,13 +1,16 @@
 package com.example.kooperatywalubelska.User;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kooperatywalubelska.R;
 
-public class UserProductInformationActivity extends AppCompatActivity {
+public class UserProductInformationActivity extends Fragment {
 TextView nazwaProduktu;
 TextView opisProduktu;
 TextView dostawcaProduktu;
@@ -15,13 +18,12 @@ TextView minIloscProduktu;
 
 String nazwa,opis,dostawca,minIlosc;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.product_information_activity);
-        nazwaProduktu =  findViewById(R.id.nazwaProduktuText);
-        opisProduktu =  findViewById(R.id.opisProduktuText);
-        dostawcaProduktu =  findViewById(R.id.dostawcaProduktuText);
-        minIloscProduktu = findViewById(R.id.minIloscProduktuText);
+    public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.product_information_activity,container, false);
+        nazwaProduktu =  v.findViewById(R.id.nazwaProduktuText);
+        opisProduktu =  v.findViewById(R.id.opisProduktuText);
+        dostawcaProduktu =  v.findViewById(R.id.dostawcaProduktuText);
+        minIloscProduktu = v.findViewById(R.id.minIloscProduktuText);
         nazwaProduktu.setVisibility(View.VISIBLE);
         opisProduktu.setVisibility(View.VISIBLE);
         dostawcaProduktu.setVisibility(View.VISIBLE);
@@ -35,5 +37,6 @@ String nazwa,opis,dostawca,minIlosc;
         dostawcaProduktu.setText(dostawca);
         minIloscProduktu.setText(minIlosc);
 
+        return v;
     }
 }

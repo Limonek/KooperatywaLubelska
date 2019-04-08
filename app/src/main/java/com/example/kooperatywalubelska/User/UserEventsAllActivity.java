@@ -32,11 +32,11 @@ public class UserEventsAllActivity extends Fragment {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getContext(),UserEventInformationActivity.class);
+                /*Intent intent = new Intent(getContext(),UserEventInformationActivity.class);
                 intent.putExtra("name",nameEvent[i]);
                 intent.putExtra("date",dateEvent[i]);
                 intent.putExtra("discription",discriptionEvent[i]);
-                startActivity(intent);
+                startActivity(intent);*/
 
             }
         });

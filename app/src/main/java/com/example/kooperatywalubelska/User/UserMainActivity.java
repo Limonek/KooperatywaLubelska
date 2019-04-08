@@ -1,78 +1,55 @@
 package com.example.kooperatywalubelska.User;
 
+import android.app.Fragment;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.kooperatywalubelska.Administrator.AdministratorMainActivity;
 import com.example.kooperatywalubelska.R;
 import com.example.kooperatywalubelska.Supplier.SupplierMainActivity;
 
-public class UserMainActivity extends AppCompatActivity {
+public class UserMainActivity extends Fragment {
     Button zamowienia;
     Button wydarzenia;
     Button listaProduktow;
 
-    Button admin;
-    Button supp;
-    Button profil;
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_main_activity);
-        zamowienia = findViewById(R.id.zamowieniaButton);
-        wydarzenia = findViewById(R.id.wydarzeniaButton);
-        listaProduktow = findViewById(R.id.listaProduktowButton);
+    public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.user_main_activity,container, false);
+        zamowienia = v.findViewById(R.id.zamowieniaButton);
+        wydarzenia = v.findViewById(R.id.wydarzeniaButton);
+        listaProduktow = v.findViewById(R.id.listaProduktowButton);
 
         zamowienia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),UserProductFragmentsActivity.class);
+                Intent intent = new Intent(getContext(),UserProductFragmentsActivity.class);
                 startActivity(intent);
             }
         });
         wydarzenia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),UserEventListActivity.class);
+                Intent intent = new Intent(getContext(),UserEventListActivity.class);
                 startActivity(intent);
             }
         });
         listaProduktow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),UserProductFragmentsActivity.class);
+                Intent intent = new Intent(getContext(),UserProductFragmentsActivity.class);
                 startActivity(intent);
             }
         });
 
 
-        admin = findViewById(R.id.adminTryb);
-        supp = findViewById(R.id.supplierTryb);
-        profil = findViewById(R.id.personal);
-
-        admin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),AdministratorMainActivity.class);
-                startActivity(intent);
-            }
-        });
-        supp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SupplierMainActivity.class);
-                startActivity(intent);
-            }
-        });
-        profil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),UserPersonalInformationActivity.class);
-                startActivity(intent);
-            }
-        });
+        return v;
     }
 }

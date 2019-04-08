@@ -1,15 +1,18 @@
 package com.example.kooperatywalubelska.Supplier;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.kooperatywalubelska.R;
 
-public class SupplierProductInformationEditActivity extends AppCompatActivity {
+public class SupplierProductInformationEditActivity extends Fragment {
     TextView nazwaProduktu;
     TextView opisProduktu;
     TextView dostawcaProduktu;
@@ -17,14 +20,13 @@ public class SupplierProductInformationEditActivity extends AppCompatActivity {
     Button zapiszButton;
     String nazwa,opis,dostawca,minIlosc;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.product_information_activity);
-        nazwaProduktu =  findViewById(R.id.nazwaProduktuText);
-        opisProduktu =  findViewById(R.id.opisProduktuText);
-        dostawcaProduktu =  findViewById(R.id.dostawcaProduktuText);
-        minIloscEditProduktu = findViewById(R.id.minIloscEditText);
-        zapiszButton = findViewById(R.id.zapiszButton);
+    public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.product_information_activity,container, false);
+        nazwaProduktu =  v.findViewById(R.id.nazwaProduktuText);
+        opisProduktu =  v.findViewById(R.id.opisProduktuText);
+        dostawcaProduktu =  v.findViewById(R.id.dostawcaProduktuText);
+        minIloscEditProduktu = v.findViewById(R.id.minIloscEditText);
+        zapiszButton = v.findViewById(R.id.zapiszButton);
         nazwaProduktu.setVisibility(View.VISIBLE);
         opisProduktu.setVisibility(View.VISIBLE);
         dostawcaProduktu.setVisibility(View.VISIBLE);
@@ -45,6 +47,6 @@ public class SupplierProductInformationEditActivity extends AppCompatActivity {
                 //zapis do bazy - przycisk mozna zaprogramowac aby pojawil sie po zmianie wartosci w polu ilosci
             }
         });
-
+        return v;
     }
 }
