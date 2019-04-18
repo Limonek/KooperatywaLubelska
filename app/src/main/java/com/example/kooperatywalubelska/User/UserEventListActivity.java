@@ -1,10 +1,11 @@
 package com.example.kooperatywalubelska.User;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.kooperatywalubelska.R;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTabHost;
 
 public class UserEventListActivity extends AppCompatActivity {
     FragmentTabHost tabHost;

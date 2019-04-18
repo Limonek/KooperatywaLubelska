@@ -1,20 +1,16 @@
 package com.example.kooperatywalubelska.Administrator;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.kooperatywalubelska.R;
-import com.example.kooperatywalubelska.Supplier.SupplierMainActivity;
-import com.example.kooperatywalubelska.User.UserMainActivity;
+
+import androidx.annotation.Nullable;
 
 public class AdministratorMainActivity extends Fragment {
 
