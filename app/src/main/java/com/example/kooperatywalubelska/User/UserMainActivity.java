@@ -1,6 +1,8 @@
 package com.example.kooperatywalubelska.User;
 
-import android.app.Fragment;
+
+//import android.app.FragmentTransaction;
+//import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +13,8 @@ import android.widget.Button;
 import com.example.kooperatywalubelska.R;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class UserMainActivity extends Fragment {
     Button zamowienia;
@@ -28,22 +32,28 @@ public class UserMainActivity extends Fragment {
         zamowienia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(),UserProductFragmentsActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new com.example.kooperatywalubelska.User.UserProductFragmentsListActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
         wydarzenia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(),UserEventListActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new com.example.kooperatywalubelska.User.UserEventListActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
         listaProduktow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(),UserProductFragmentsActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new com.example.kooperatywalubelska.User.UserProductFragmentsListActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

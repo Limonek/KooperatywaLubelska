@@ -11,6 +11,7 @@ import com.example.kooperatywalubelska.Adapters.EventAdapter;
 import com.example.kooperatywalubelska.R;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class UserEventsAllActivity extends Fragment {
     private ListView lista ;
@@ -29,11 +30,10 @@ public class UserEventsAllActivity extends Fragment {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /*Intent intent = new Intent(getContext(),UserEventInformationActivity.class);
-                intent.putExtra("name",nameEvent[i]);
-                intent.putExtra("date",dateEvent[i]);
-                intent.putExtra("discription",discriptionEvent[i]);
-                startActivity(intent);*/
+                FragmentTransaction transaction = getParentFragment().getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new UserEventInformationActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });

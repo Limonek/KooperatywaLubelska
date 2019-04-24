@@ -13,6 +13,7 @@ import com.example.kooperatywalubelska.Adapters.ProductAdapter;
 import com.example.kooperatywalubelska.R;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class UserProductNotOrderedActivity extends Fragment {
     String[] produkty = {"Marchewka","Pietruszka", "Pomidor", "Czereśnie", "Wiśnie"};
@@ -31,8 +32,10 @@ public class UserProductNotOrderedActivity extends Fragment {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getContext(),UserProductInformationActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getParentFragment().getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new UserProductInformationActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });

@@ -1,23 +1,24 @@
 package com.example.kooperatywalubelska.User;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.kooperatywalubelska.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTabHost;
 
-public class UserEventListActivity extends Fragment {
+import com.example.kooperatywalubelska.R;
+
+public class UserProductFragmentsListActivity extends Fragment {
 
     private static final String TAG = UserProductFragmentsListActivity.class.getSimpleName();
 
-    public UserEventListActivity() {
+    public UserProductFragmentsListActivity() {
     }
 
     private FragmentTabHost fragmentTabHost;
@@ -25,7 +26,7 @@ public class UserEventListActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+                           @Nullable Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView: ");
         return inflater.inflate(R.layout.fragment_activity,container,false);
     }
@@ -42,9 +43,9 @@ public class UserEventListActivity extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Log.i(TAG, "onActivityCreated: ");
         fragmentTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
-        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("wszystkie").setIndicator("Wszystkie"), UserEventsAllActivity.class,null);
-        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("zadeklarowane").setIndicator("Zadeklarowane"), UserEventDeclaredActivity.class,null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("zamowione").setIndicator("Zamówione"), UserProductOrderedActivity.class, null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("wszystkie").setIndicator("Wszystkie"), UserProductListActivity.class, null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("niezamowione").setIndicator("Nie zamówione"), UserProductNotOrderedActivity.class, null);
 
     }
 }
-

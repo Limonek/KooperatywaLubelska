@@ -25,10 +25,6 @@
         <activity android:name=".Administrator.AdministratorMain"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".User.UserEventListActivity">
-        </activity>
-        <activity android:name=".User.UserProductFragmentsActivity">
-        </activity>
 
 
     </application>

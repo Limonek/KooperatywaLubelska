@@ -1,7 +1,6 @@
 package com.example.kooperatywalubelska.Supplier;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class SupplierMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
@@ -38,7 +39,7 @@ public class SupplierMain extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_container,new SupplierMainActivity()).commit();
 
 
@@ -48,8 +49,8 @@ public class SupplierMain extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent i;
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         switch(item.getItemId()) {
             case R.id.nav_main_activity:

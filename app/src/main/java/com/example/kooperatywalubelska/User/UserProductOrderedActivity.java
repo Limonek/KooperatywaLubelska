@@ -10,11 +10,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.kooperatywalubelska.Adapters.ProductAdapter;
+import com.example.kooperatywalubelska.Administrator.AdministratorEventListActivity;
+import com.example.kooperatywalubelska.Administrator.AdministratorProductInformationActivity;
 import com.example.kooperatywalubelska.R;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-public class UserProductOrderedFragment extends Fragment {
+public class UserProductOrderedActivity extends Fragment {
     String[] produkty = {"Ogórki", "Szparagi", "Pietruszka", "Wiśnie"};
 
     TextView typListy;
@@ -31,8 +34,10 @@ public class UserProductOrderedFragment extends Fragment {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getContext(),UserProductInformationActivity.class);
-                startActivity(intent);
+                FragmentTransaction transaction = getParentFragment().getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container,new UserProductInformationActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });

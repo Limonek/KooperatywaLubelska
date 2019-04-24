@@ -1,7 +1,8 @@
 package com.example.kooperatywalubelska.User;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+//import android.app.FragmentManager;
+//import android.app.FragmentTransaction;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,8 +18,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-public class UserMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class UserMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private DrawerLayout drawer;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ private DrawerLayout drawer;
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_container,new UserMainActivity()).commit();
 
     }
@@ -44,8 +47,8 @@ private DrawerLayout drawer;
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent i;
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch(item.getItemId()) {
             case R.id.nav_main_activity:
                 transaction.replace(R.id.fragment_container,new UserMainActivity());
@@ -60,8 +63,9 @@ private DrawerLayout drawer;
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_product:
-                i = new Intent(getApplicationContext(), UserEventListActivity.class);
-                startActivity(i);
+                transaction.replace(R.id.fragment_container,new UserProductFragmentsListActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_supplier:
