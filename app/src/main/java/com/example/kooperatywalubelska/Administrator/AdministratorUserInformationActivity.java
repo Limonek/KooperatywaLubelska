@@ -97,7 +97,7 @@ public class AdministratorUserInformationActivity extends Fragment {
             }
         });
 
-        edytujButton.setOnClickListener(new View.OnClickListener() {
+        zapiszButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nameEditText.setVisibility(View.INVISIBLE);

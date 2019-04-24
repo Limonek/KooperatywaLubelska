@@ -18,6 +18,7 @@ public class AdministratorUserAddActivity extends Fragment {
     EditText emailEditText;
     EditText phoneEditText;
     Button zapiszButton;
+    Button edytujButton;
 
     @Override
     public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,13 +30,14 @@ public class AdministratorUserAddActivity extends Fragment {
         emailEditText = v.findViewById(R.id.emailEditText);
         phoneEditText = v.findViewById(R.id.phoneEditText);
         zapiszButton = v.findViewById(R.id.zapiszButton);
+        edytujButton = v.findViewById(R.id.edytujButton);
         nameEditText.setVisibility(View.VISIBLE);
         lastNameEditText.setVisibility(View.VISIBLE);
         dateOfBirthEditText.setVisibility(View.VISIBLE);
         addressEditText.setVisibility(View.VISIBLE);
         emailEditText.setVisibility(View.VISIBLE);
         phoneEditText.setVisibility(View.VISIBLE);
-
+        edytujButton.setVisibility(View.INVISIBLE);
 
         zapiszButton.setOnClickListener(new View.OnClickListener() {
             @Override

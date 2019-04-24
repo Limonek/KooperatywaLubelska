@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.kooperatywalubelska.R;
 
-public class AdministrationProductInformationActivity  extends Fragment {
+public class AdministratorProductInformationActivity extends Fragment {
     TextView nazwaProduktu;
     TextView opisProduktu;
     TextView dostawcaProduktu;
@@ -68,6 +68,8 @@ public class AdministrationProductInformationActivity  extends Fragment {
                 opisEditProduktu.setText(opisProduktu.getText());
                 dostawcaEditProduktu.setText(dostawcaProduktu.getText());
                 minIloscEditProduktu.setText(minIloscProduktu.getText());
+
+                opisProduktu.setText("");
 
                 edytujButton.setVisibility(View.INVISIBLE);
                 nazwaProduktu.setVisibility(View.INVISIBLE);

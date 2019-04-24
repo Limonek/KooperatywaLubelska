@@ -36,7 +36,7 @@ public class AdministratorProductListActivity extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container,new AdministrationProductInformationActivity());
+                transaction.replace(R.id.fragment_container,new AdministratorProductInformationActivity());
                 transaction.addToBackStack(null);
                 transaction.commit();
 
