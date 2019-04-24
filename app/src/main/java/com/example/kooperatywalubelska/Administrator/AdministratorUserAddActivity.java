@@ -42,7 +42,7 @@ public class AdministratorUserAddActivity extends Fragment {
         zapiszButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //zapis
+                //zapis do bazy
             }
         });
 
