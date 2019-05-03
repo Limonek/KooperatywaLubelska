@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class UserProductNotOrderedActivity extends Fragment {
     String[] produkty = {"Marchewka","Pietruszka", "Pomidor", "Czereśnie", "Wiśnie"};
+    String[] dostawca = {"Dostawca 1","Dostawca 2","Dostawca 3","Dostawca 1","Dostawca 2"};
 
     TextView typListy;
     private ListView lista ;
@@ -26,7 +27,7 @@ public class UserProductNotOrderedActivity extends Fragment {
         typListy = v.findViewById(R.id.typListy);
         typListy.setText("Niezamówione produkty");
         lista = v.findViewById(R.id.lista);
-        ProductAdapter productAdapter = new ProductAdapter(v.getContext(),produkty);
+        ProductAdapter productAdapter = new ProductAdapter(v.getContext(),produkty,dostawca);
         lista.setAdapter(productAdapter);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {

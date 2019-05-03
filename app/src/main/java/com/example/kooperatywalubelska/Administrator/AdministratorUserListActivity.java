@@ -19,6 +19,7 @@ public class AdministratorUserListActivity extends Fragment {
     TextView typListy;
     private ListView lista ;
     String[] uzytkownicy = {"AdamMajewski", "NowyDostawca", "MiMaciejewski", "MichalB", "WojtekP", "PawelWojtowicz", "MarekMa", "KasiaCath", "JuliaWronska"};
+    String[] dostawca = {"Dostawca 1","Dostawca 2","Dostawca 3","Dostawca 1","Dostawca 2","Dostawca 3","Dostawca 1","Dostawca 2","Dostawca 3"};
     Button addProductButton;
 
     @Override
@@ -30,7 +31,7 @@ public class AdministratorUserListActivity extends Fragment {
         addProductButton.setText("Dodaj nowego użytkownika");
 
         lista = v.findViewById(R.id.lista);
-        ProductAdapter productAdapter = new ProductAdapter(getContext(),uzytkownicy);
+        ProductAdapter productAdapter = new ProductAdapter(getContext(),uzytkownicy,dostawca);
         lista.setAdapter(productAdapter);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {

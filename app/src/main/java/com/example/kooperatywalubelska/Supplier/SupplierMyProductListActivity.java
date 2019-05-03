@@ -16,13 +16,14 @@ import com.example.kooperatywalubelska.R;
 public class SupplierMyProductListActivity extends Fragment {
     private ListView lista ;
     String[] produkty = {"Marchewka", "Ogórki", "Rzodkiewka", "Szparagi"};
+    String[] dostawca = {"Dostawca 1","Dostawca 2","Dostawca 3","Dostawca 2"};
 
     @Override
     public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_clear_activity,container, false);
 
         lista = v.findViewById(R.id.lista);
-        ProductAdapter productAdapter = new ProductAdapter(getContext(), produkty);
+        ProductAdapter productAdapter = new ProductAdapter(getContext(), produkty,dostawca);
         lista.setAdapter(productAdapter);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -40,6 +40,7 @@ public class AdministratorUserAddActivity extends Fragment {
         emailEditText.setVisibility(View.VISIBLE);
         phoneEditText.setVisibility(View.VISIBLE);
         edytujButton.setVisibility(View.INVISIBLE);
+        zapiszButton.setVisibility(View.VISIBLE);
 
         zapiszButton.setOnClickListener(new View.OnClickListener() {
             @Override

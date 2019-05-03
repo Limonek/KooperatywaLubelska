@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class UserProductOrderedActivity extends Fragment {
     String[] produkty = {"Ogórki", "Szparagi", "Pietruszka", "Wiśnie"};
+    String[] dostawca = {"Dostawca 1","Dostawca 2","Dostawca 3","Dostawca 2"};
 
     TextView typListy;
     private ListView lista ;
@@ -28,7 +29,7 @@ public class UserProductOrderedActivity extends Fragment {
         typListy =  v.findViewById(R.id.typListy);
         typListy.setText("Zamówione produkty");
         lista = v.findViewById(R.id.lista);
-        ProductAdapter productAdapter = new ProductAdapter(v.getContext(),produkty);
+        ProductAdapter productAdapter = new ProductAdapter(v.getContext(),produkty, dostawca);
         lista.setAdapter(productAdapter);
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -13,10 +13,12 @@ public class ProductAdapter extends BaseAdapter {
 Context context;
 String[] listaProduktów;
 LayoutInflater inflater;
+String[] listSupplier;
 
-public ProductAdapter(Context applicationContext, String[] listaProduktów) {
+public ProductAdapter(Context applicationContext, String[] listaProduktów, String[] listSupplier) {
     this.context=applicationContext;
     this.listaProduktów=listaProduktów;
+    this.listSupplier=listSupplier;
     inflater=(LayoutInflater.from(applicationContext));
 }
     @Override
@@ -38,7 +40,10 @@ public ProductAdapter(Context applicationContext, String[] listaProduktów) {
     public View getView(int i, View view, ViewGroup viewGroup) {
     view  = inflater.inflate(R.layout.element_list_product_activity, null);
         TextView produkt = view.findViewById(R.id.NazwaProduktuText);
+        TextView dostawca = view.findViewById(R.id.supplierText);
         produkt.setText(listaProduktów[i]);
+        dostawca.setText(listSupplier[i]);
+
     return view;
     }
 }
