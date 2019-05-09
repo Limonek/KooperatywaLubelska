@@ -1,47 +1,79 @@
 package com.example.kooperatywalubelska.User;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.kooperatywalubelska.Adapters.ProductAdapter;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.kooperatywalubelska.R;
+import com.example.kooperatywalubelska.database.Product;
+import com.example.kooperatywalubelska.viewmodels.ProductViewModel;
+import com.example.kooperatywalubelska.viewmodels.ProductViewModelFactory;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import java.util.List;
 
-public class UserProductListActivity extends Fragment {
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import dagger.android.support.DaggerFragment;
+
+public class UserProductListActivity extends DaggerFragment{
+
+    @BindView(R.id.typListy)
     TextView typListy;
-    private ListView lista ;
-    String[] produkty = {"Marchewka", "Ogórki", "Rzodkiewka", "Szparagi", "Pietruszka", "Pomidor", "Grzyby", "Czereśnie", "Wiśnie"};
-    String[] dostawca = {"Dostawca 1","Dostawca 2","Dostawca 3","Dostawca 1","Dostawca 2","Dostawca 3","Dostawca 1","Dostawca 2","Dostawca 3"};
 
+    @BindView(R.id.lista)
+    RecyclerView allProductsRecyclerView;
+
+    @Inject
+    ProductViewModelFactory productViewModelFactory;
+
+    private ProductViewModel productViewModel;
+
+    private LiveData<List<Product>> allProductsLiveData;
+
+    private ProductRecyclerViewAdapter productProductRecyclerViewAdapter;
 
     @Override
-    public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.list_activity,container, false);
-        typListy = v.findViewById(R.id.typListy);
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+
+        productViewModel = ViewModelProviders.of(getActivity(), productViewModelFactory).get(ProductViewModel.class);
+        productViewModel.initOrRefreshProductsList();
+
+        allProductsLiveData = productViewModel.getProductList();
+
+        productProductRecyclerViewAdapter = new ProductRecyclerViewAdapter(allProductsLiveData.getValue());
+
+        allProductsLiveData.observe(this, (products)->
+                productProductRecyclerViewAdapter.setList(products));
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.list_view, container, false);
+        ButterKnife.bind(this,v);
         typListy.setText("Wszystkie produkty");
 
-        lista = v.findViewById(R.id.lista);
-        ProductAdapter productAdapter = new ProductAdapter(v.getContext(),produkty,dostawca);
-        lista.setAdapter(productAdapter);
+        allProductsRecyclerView.setAdapter(productProductRecyclerViewAdapter);
+        allProductsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                FragmentTransaction transaction = getParentFragment().getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container,new UserProductInformationActivity());
-                transaction.addToBackStack(null);
-                transaction.commit();
-
-            }
-        });
+//        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                FragmentTransaction transaction = getParentFragment().getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container, new UserProductInformationActivity());
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+//            }
+//        });
 
         return v;
     }
