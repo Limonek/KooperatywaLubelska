@@ -1,33 +1,35 @@
 package com.example.kooperatywalubelska.database;
 
-import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 
 import java.util.Date;
 
-@Entity
-public class Supplier implements EntityWithDate {
+public class TradeUnit implements EntityWithDate {
     @PrimaryKey
     @Expose
     private int id;
     @Expose
     private String name;
     @Expose
-    private String didcription;
+    private String symbol;
+    @Expose
+    private int unityPrecision;
 
     private Date lastRefresh;
 
-    public Supplier(int id,String name,String didcription) {
+    public TradeUnit(int id,String name,String symbol,int unityPrecision) {
         this.id=id;
         this.name=name;
-        this.didcription=didcription;
+        this.symbol=symbol;
+        this.unityPrecision=unityPrecision;
     }
-    public Supplier(int id,String name,String didcription,Date lastRefresh) {
+    public TradeUnit(int id,String name,String symbol,int unityPrecision,Date lastRefresh) {
         this.id=id;
         this.name=name;
-        this.didcription=didcription;
+        this.symbol=symbol;
+        this.unityPrecision=unityPrecision;
         this.lastRefresh=lastRefresh;
     }
 
@@ -57,11 +59,19 @@ public class Supplier implements EntityWithDate {
         this.name = name;
     }
 
-    public String getDidcription() {
-        return didcription;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setDidcription(String didcription) {
-        this.didcription = didcription;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public int getUnityPrecision() {
+        return unityPrecision;
+    }
+
+    public void setUnityPrecision(int unityPrecision) {
+        this.unityPrecision = unityPrecision;
     }
 }

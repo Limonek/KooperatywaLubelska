@@ -32,6 +32,28 @@ public class Product implements EntityWithDate {
 
     private Date lastRefresh;
 
+    public Product(int id,String name,String description,boolean availability,int minimalAmount,int maximalAmount,int supplierId,int categoryId) {
+        this.id=id;
+        this.name=name;
+        this.description=description;
+        this.availability=availability;
+        this.minimalAmount=minimalAmount;
+        this.maximalAmount=maximalAmount;
+        this.supplierId=supplierId;
+        this.categoryId=categoryId;
+    }
+    public Product(int id,String name,String description,boolean availability,int minimalAmount,int maximalAmount,int supplierId,int categoryId,Date lastRefresh) {
+        this.id=id;
+        this.name=name;
+        this.description=description;
+        this.availability=availability;
+        this.minimalAmount=minimalAmount;
+        this.maximalAmount=maximalAmount;
+        this.supplierId=supplierId;
+        this.categoryId=categoryId;
+        this.lastRefresh=lastRefresh;
+    }
+
     @Override
     public Date getLastRefresh() {
         return lastRefresh;

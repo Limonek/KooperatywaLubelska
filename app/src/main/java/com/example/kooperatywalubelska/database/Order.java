@@ -33,4 +33,40 @@ public class Order implements EntityWithDate {
     public void setLastRefresh(Date lastRefresh) {
         this.lastRefresh = lastRefresh;
     }
+
+    public Order(int id,int userId,Date date) {
+        this.id=id;
+        this.userId=userId;
+        this.date=date;
+    }
+    public Order(int id,int userId,Date date,Date lastRefresh) {
+        this.id=id;
+        this.userId=userId;
+        this.date=date;
+        this.lastRefresh=lastRefresh;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
