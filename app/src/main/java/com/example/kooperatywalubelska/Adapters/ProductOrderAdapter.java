@@ -38,7 +38,7 @@ public class ProductOrderAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view  = inflater.inflate(R.layout.element_list_product_order_activity, null);
+        view  = inflater.inflate(R.layout.element_list_order_activity, null);
         TextView produkt = view.findViewById(R.id.NazwaProduktuText);
         TextView il=view.findViewById(R.id.iloscProduktuText);
         produkt.setText(listaProduktów[i]);
