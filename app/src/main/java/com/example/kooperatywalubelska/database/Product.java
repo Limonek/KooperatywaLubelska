@@ -2,6 +2,7 @@ package com.example.kooperatywalubelska.database;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -32,6 +33,7 @@ public class Product implements EntityWithDate {
 
     private Date lastRefresh;
 
+    @Ignore
     public Product(int id,String name,String description,boolean availability,int minimalAmount,int maximalAmount,int supplierId,int categoryId) {
         this.id=id;
         this.name=name;
@@ -42,6 +44,8 @@ public class Product implements EntityWithDate {
         this.supplierId=supplierId;
         this.categoryId=categoryId;
     }
+
+
     public Product(int id,String name,String description,boolean availability,int minimalAmount,int maximalAmount,int supplierId,int categoryId,Date lastRefresh) {
         this.id=id;
         this.name=name;

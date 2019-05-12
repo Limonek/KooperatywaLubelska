@@ -2,6 +2,7 @@ package com.example.kooperatywalubelska.database;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -34,6 +35,7 @@ public class Order implements EntityWithDate {
         this.lastRefresh = lastRefresh;
     }
 
+    @Ignore
     public Order(int id,int userId,Date date) {
         this.id=id;
         this.userId=userId;

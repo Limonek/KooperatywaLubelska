@@ -1,13 +1,18 @@
 package com.example.kooperatywalubelska.database;
 
+import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 
 import java.util.Date;
 
+@Entity
 public class OrderDetail implements EntityWithDate {
+
+    public OrderDetail(){}
 
     @PrimaryKey
     @Expose
@@ -26,12 +31,15 @@ public class OrderDetail implements EntityWithDate {
 
     private Date lastRefresh;
 
+    @Ignore
     public OrderDetail(int id,int quantity,int productId,int tradeUnitId) {
         this.id=id;
         this.quantity=quantity;
         this.productId=productId;
         this.tradeUnitId=tradeUnitId;
     }
+
+    @Ignore
     public OrderDetail(int id,int quantity,int productId,int tradeUnitId,Date lastRefresh) {
         this.id=id;
         this.quantity=quantity;
@@ -81,4 +89,8 @@ public class OrderDetail implements EntityWithDate {
     public void setTradeUnitId(int tradeUnitId) {
         this.tradeUnitId = tradeUnitId;
     }
+
+    @Ignore
+    Product product;
+
 }
