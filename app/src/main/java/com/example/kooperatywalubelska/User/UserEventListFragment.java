@@ -6,18 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.kooperatywalubelska.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTabHost;
 
-public class UserEventListActivity extends Fragment {
+import com.example.kooperatywalubelska.R;
+
+public class UserEventListFragment extends Fragment {
 
     private static final String TAG = UserProductFragmentsListActivity.class.getSimpleName();
 
-    public UserEventListActivity() {
+    public UserEventListFragment() {
     }
 
     private FragmentTabHost fragmentTabHost;
@@ -42,8 +42,8 @@ public class UserEventListActivity extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Log.i(TAG, "onActivityCreated: ");
         fragmentTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
-        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("wszystkie").setIndicator("Wszystkie"), UserEventsAllActivity.class,null);
-        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("zadeklarowane").setIndicator("Zadeklarowane"), UserEventDeclaredActivity.class,null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("wszystkie").setIndicator("Wszystkie"), UserEventsAllFragment.class,null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("zadeklarowane").setIndicator("Zadeklarowane"), UserEventDeclaredFragment.class,null);
 
     }
 }

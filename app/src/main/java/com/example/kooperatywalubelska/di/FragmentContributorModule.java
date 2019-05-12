@@ -1,7 +1,7 @@
 package com.example.kooperatywalubelska.di;
 
 import com.example.kooperatywalubelska.User.UserProductFragmentsListActivity;
-import com.example.kooperatywalubelska.User.UserProductListActivity;
+import com.example.kooperatywalubelska.User.UserProductListFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -13,6 +13,6 @@ public abstract class FragmentContributorModule {
     abstract UserProductFragmentsListActivity contributeUserProductFragmentsListActivity();
 
     @ContributesAndroidInjector
-    abstract UserProductListActivity contributeUserProductListActivity ();
+    abstract UserProductListFragment contributeUserProductListActivity ();
 
 }

@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kooperatywalubelska.R;
 
-public class UserEventInformationActivity extends Fragment {
+public class UserEventInformationFragment extends Fragment {
     TextView nameEvent;
     TextView dateEvent;
     TextView discriptionEvent;

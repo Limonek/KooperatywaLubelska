@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kooperatywalubelska.R;
 
-public class UserPersonalInformationActivity  extends Fragment {
+public class UserPersonalInformationFragment extends Fragment {
     TextView nameText;
     TextView lastNameText;
     TextView dateOfBirthText;

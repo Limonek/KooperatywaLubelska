@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.example.kooperatywalubelska.R;
 import com.example.kooperatywalubelska.Supplier.SupplierMain;
 import com.example.kooperatywalubelska.User.UserMain;
-import com.example.kooperatywalubelska.User.UserMainActivity;
+import com.example.kooperatywalubelska.User.UserMainFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -57,7 +57,7 @@ public class AdministratorMain extends AppCompatActivity implements NavigationVi
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_main_activity_user:
-                transaction.replace(R.id.fragment_container,new UserMainActivity());
+                transaction.replace(R.id.fragment_container,new UserMainFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);

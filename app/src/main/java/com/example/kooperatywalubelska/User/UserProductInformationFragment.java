@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.kooperatywalubelska.R;
 
-public class UserProductInformationActivity extends Fragment {
+public class UserProductInformationFragment extends Fragment {
 TextView nazwaProduktu;
 TextView opisProduktu;
 TextView dostawcaProduktu;
