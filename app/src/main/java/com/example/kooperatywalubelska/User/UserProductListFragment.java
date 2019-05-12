@@ -24,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.support.DaggerFragment;
 
-public class UserProductListActivity extends DaggerFragment{
+public class UserProductListFragment extends DaggerFragment{
 
     @BindView(R.id.typListy)
     TextView typListy;
@@ -69,7 +69,7 @@ public class UserProductListActivity extends DaggerFragment{
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                FragmentTransaction transaction = getParentFragment().getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.fragment_container, new UserProductInformationActivity());
+//                transaction.replace(R.id.fragment_container, new UserProductInformationFragment());
 //                transaction.addToBackStack(null);
 //                transaction.commit();
 //            }

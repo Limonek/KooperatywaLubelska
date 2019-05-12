@@ -4,6 +4,7 @@ package com.example.kooperatywalubelska.User;
 //import android.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -41,8 +42,11 @@ private DrawerLayout drawer;
         toggle.syncState();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment_container,new UserMainActivity()).commit();
+        fragmentManager.beginTransaction().replace(R.id.fragment_container,new UserMainFragment()).commit();
 
+        //temporar solution - no login
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        sharedPreferences.edit().putInt("userId",1);
     }
 
     @Override
@@ -52,13 +56,13 @@ private DrawerLayout drawer;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch(item.getItemId()) {
             case R.id.nav_main_activity:
-                transaction.replace(R.id.fragment_container,new UserMainActivity());
+                transaction.replace(R.id.fragment_container,new UserMainFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_profile:
-                transaction.replace(R.id.fragment_container,new UserPersonalInformationActivity());
+                transaction.replace(R.id.fragment_container,new UserPersonalInformationFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);

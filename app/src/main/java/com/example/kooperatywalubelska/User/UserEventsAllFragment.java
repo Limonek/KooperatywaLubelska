@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.kooperatywalubelska.Adapters.EventAdapter;
-import com.example.kooperatywalubelska.R;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class UserEventsAllActivity extends Fragment {
+import com.example.kooperatywalubelska.Adapters.EventAdapter;
+import com.example.kooperatywalubelska.R;
+
+public class UserEventsAllFragment extends Fragment {
     private ListView lista ;
 
     String[] nameEvent = {"Podział produktów styczeń", "Zdrowe żywienie", "Nowi dostawcy", "Podział produktów Luty"};
@@ -31,7 +31,7 @@ public class UserEventsAllActivity extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 FragmentTransaction transaction = getParentFragment().getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container,new UserEventInformationActivity());
+                transaction.replace(R.id.fragment_container,new UserEventInformationFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
 

@@ -43,9 +43,9 @@ public class UserProductFragmentsListActivity extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Log.i(TAG, "onActivityCreated: ");
         fragmentTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
-        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("zamowione").setIndicator("Zamówione"), UserProductOrderedActivity.class, null);
-        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("wszystkie").setIndicator("Wszystkie"), UserProductListActivity.class, null);
-        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("niezamowione").setIndicator("Nie zamówione"), UserProductNotOrderedActivity.class, null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("zamowione").setIndicator("Zamówione"), UserProductOrderedFragment.class, null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("wszystkie").setIndicator("Wszystkie"), UserProductListFragment.class, null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("niezamowione").setIndicator("Nie zamówione"), UserProductNotOrderedFragment.class, null);
 
     }
 }

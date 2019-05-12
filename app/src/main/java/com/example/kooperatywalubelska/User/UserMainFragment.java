@@ -3,20 +3,19 @@ package com.example.kooperatywalubelska.User;
 
 //import android.app.FragmentTransaction;
 //import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.kooperatywalubelska.R;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class UserMainActivity extends Fragment {
+import com.example.kooperatywalubelska.R;
+
+public class UserMainFragment extends Fragment {
     Button zamowienia;
     Button wydarzenia;
     Button listaProduktow;
@@ -42,7 +41,7 @@ public class UserMainActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container,new com.example.kooperatywalubelska.User.UserEventListActivity());
+                transaction.replace(R.id.fragment_container,new UserEventListFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
