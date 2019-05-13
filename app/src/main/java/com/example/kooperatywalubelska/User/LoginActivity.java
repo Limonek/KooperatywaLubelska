@@ -1,6 +1,7 @@
 package com.example.kooperatywalubelska.User;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
 
                  */
+
+                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                sharedPreferences.edit().putInt("userId",1);
             }
         });
 

@@ -1,6 +1,7 @@
 package com.example.kooperatywalubelska.database;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -16,18 +17,23 @@ public class Supplier implements EntityWithDate {
     private String name;
     @Expose
     private String didcription;
+    @Expose
+    @ForeignKey(entity = User.class, parentColumns = "id",childColumns = "userId")
+    private int userId;
 
     private Date lastRefresh;
 
-    public Supplier(int id,String name,String didcription) {
+    public Supplier(int id,String name,String didcription, int userId) {
         this.id=id;
         this.name=name;
         this.didcription=didcription;
+        this.userId=userId;
     }
-    public Supplier(int id,String name,String didcription,Date lastRefresh) {
+    public Supplier(int id,String name,String didcription, int userId,Date lastRefresh) {
         this.id=id;
         this.name=name;
         this.didcription=didcription;
+        this.userId=userId;
         this.lastRefresh=lastRefresh;
     }
 
@@ -47,6 +53,14 @@ public class Supplier implements EntityWithDate {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {
