@@ -65,6 +65,12 @@ public class SupplierMain extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
+            case R.id.nav_prediction:
+                transaction.replace(R.id.fragment_container,new SupplierProductListToPredictActivity());
+                transaction.addToBackStack(null);
+                transaction.commit();
+                drawer.closeDrawer(GravityCompat.START);
+                break;
             case R.id.nav_user:
                 i = new Intent(getApplicationContext(), UserMain.class);
                 startActivity(i);
