@@ -1,6 +1,8 @@
 package com.example.kooperatywalubelska;
 
 import com.example.kooperatywalubelska.database.GsonListDecorator;
+import com.example.kooperatywalubelska.database.Order;
+import com.example.kooperatywalubelska.database.OrderDetail;
 import com.example.kooperatywalubelska.database.Product;
 import com.example.kooperatywalubelska.database.User;
 
@@ -26,5 +28,14 @@ public interface Webservice {
 
     @GET("/get_all_product_ids.php")
     Call<GsonListDecorator<Integer>> getExistingProductIds();
+
+    @GET("/get_order_order_details.php")
+    Call<GsonListDecorator<OrderDetail>> getOrderOrderDetails(@Query("order_id") String orderId);
+
+    @GET("/get_order_order_detail_ids.php")
+    Call<GsonListDecorator<Integer>> getExistingOrderOrderIds(@Query("order_id") String orderId);
+
+    @GET("/get_order.php")
+    Call<Order> getOrder(@Query("date") String date, @Query("user_id") String userId);
 
 }

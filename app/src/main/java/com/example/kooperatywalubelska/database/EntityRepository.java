@@ -17,9 +17,9 @@ import retrofit2.Response;
 
 public abstract class EntityRepository<Entity extends EntityWithDate> {
     private static int FRESH_TIMEOUT_IN_MINUTES = 1;
-    private static int FRESH_TIMEOUT_IN_SECONDS = 15;
+    public static int FRESH_TIMEOUT_IN_SECONDS = 15;
     protected final Webservice webservice;
-    private final EntityDao<Entity> entityDao;
+    protected final EntityDao<Entity> entityDao;
     private final Executor executor;
 
     public abstract Call<GsonListDecorator<Integer>> getExistingEntityIds();
@@ -123,7 +123,7 @@ public abstract class EntityRepository<Entity extends EntityWithDate> {
         });
     }
 
-    private Date getMaxRefreshTime(Date currentDate) {
+    public static Date getMaxRefreshTime(Date currentDate) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(currentDate);
 //        cal.add(Calendar.MINUTE, -FRESH_TIMEOUT_IN_MINUTES);

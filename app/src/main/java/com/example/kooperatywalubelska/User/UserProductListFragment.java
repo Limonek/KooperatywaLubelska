@@ -47,8 +47,7 @@ public class UserProductListFragment extends DaggerFragment{
 
         productViewModel = ViewModelProviders.of(getActivity(), productViewModelFactory).get(ProductViewModel.class);
         productViewModel.initOrRefreshProductsList();
-
-        allProductsLiveData = productViewModel.getProductList();
+        allProductsLiveData = productViewModel.getAllProductsList();
 
         productProductRecyclerViewAdapter = new ProductRecyclerViewAdapter(allProductsLiveData.getValue());
 

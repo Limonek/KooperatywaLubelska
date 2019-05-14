@@ -43,10 +43,6 @@ private DrawerLayout drawer;
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_container,new UserMainFragment()).commit();
-
-        //temporar solution - no login
-        //SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-        //sharedPreferences.edit().putInt("userId",1);
     }
 
     @Override
