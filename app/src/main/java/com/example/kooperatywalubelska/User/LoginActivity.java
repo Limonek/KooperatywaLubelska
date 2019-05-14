@@ -9,16 +9,15 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kooperatywalubelska.Administrator.AdministratorMain;
 import com.example.kooperatywalubelska.R;
-import com.example.kooperatywalubelska.Supplier.SupplierMain;
 
 public class LoginActivity extends AppCompatActivity {
     EditText loginEditText;
     EditText passwordEditText;
     Button loginButton;
 
-    String login,password;
+    String login, password;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +33,14 @@ public class LoginActivity extends AppCompatActivity {
                 login = loginEditText.getText().toString();
                 password = passwordEditText.getText().toString();
 
+                //temporar solution - no login
+                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                sharedPreferences.edit().putInt("userId", Integer.parseInt(login)).commit();
+
                 //sprawdzenie w bazie i wtedy trzeba wybrac czy uzytkownik jest adminem, userem, czy supplier i wlaczyc odpowiednie Activity
 
-                Intent intent = new Intent(getApplicationContext(),UserMain.class);
-                intent.putExtra("login",login); //mozna wykorzystac pozniej w klasie jako nazwa uzytkownika w MainActivity
+                Intent intent = new Intent(getApplicationContext(), UserMain.class);
+                intent.putExtra("login", login); //mozna wykorzystac pozniej w klasie jako nazwa uzytkownika w MainActivity
                 startActivity(intent);
 
                 /* dla Admina
@@ -50,14 +53,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
 
                  */
-
-                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-                sharedPreferences.edit().putInt("userId",1);
             }
         });
 
     }
-
 
 
 }

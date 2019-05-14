@@ -13,19 +13,30 @@ import javax.inject.Inject;
 public class ProductViewModel extends ViewModel {
     private ProductRepository productRepository;
     private LiveData<Product> product;
-    private LiveData<List<Product>> productList;
+    private LiveData<List<Product>> allProductsList;
+    private LiveData<List<Product>> notOrderedProductsList;
 
     public LiveData<Product> getProduct() {
         return product;
     }
 
-    public LiveData<List<Product>> getProductList() {
-        return productList;
+    public LiveData<List<Product>> getAllProductsList() {
+        return allProductsList;
+    }
+
+    public LiveData<List<Product>> getNotOrderedProductsList() {
+        return notOrderedProductsList;
+    }
+
+    public void initNotOrderedProductsList(){
+        if (notOrderedProductsList == null) {
+            notOrderedProductsList = productRepository.getNotOrderedProductsList();
+        }
     }
 
     public void initOrRefreshProductsList() {
-        if (productList == null) {
-            productList = productRepository.getAllEntities();
+        if (allProductsList == null) {
+            allProductsList = productRepository.getAllEntities();
         }else{
             productRepository.refreshAllEntities();
         }

@@ -5,11 +5,16 @@ import android.app.Application;
 import androidx.room.Room;
 
 import com.example.kooperatywalubelska.Webservice;
+import com.example.kooperatywalubelska.database.OrderDao;
+import com.example.kooperatywalubelska.database.OrderDetailDao;
+import com.example.kooperatywalubelska.database.OrderDetailRepository;
+import com.example.kooperatywalubelska.database.OrderRepository;
 import com.example.kooperatywalubelska.database.ProductDao;
 import com.example.kooperatywalubelska.database.ProductRepository;
 import com.example.kooperatywalubelska.database.UserDao;
 import com.example.kooperatywalubelska.database.UserDatabase;
 import com.example.kooperatywalubelska.database.UserRepository;
+import com.example.kooperatywalubelska.viewmodels.OrderDetailViewModelFactory;
 import com.example.kooperatywalubelska.viewmodels.ProductViewModelFactory;
 import com.example.kooperatywalubelska.viewmodels.UserViewModelFactory;
 import com.google.gson.Gson;
@@ -64,6 +69,18 @@ public class AppModule {
     }
 
     @Provides
+    @Singleton
+    OrderDao providesOrderDao(UserDatabase userDatabase) {
+        return userDatabase.orderDao();
+    }
+
+    @Provides
+    @Singleton
+    OrderDetailDao providesOrderDatailDao(UserDatabase userDatabase) {
+        return userDatabase.orderDetailDao();
+    }
+
+    @Provides
     Executor provideExecutor() {
         return Executors.newSingleThreadExecutor();
     }
@@ -76,14 +93,20 @@ public class AppModule {
 
     @Singleton
     @Provides
-    UserViewModelFactory provideUserViewModelFactory(UserRepository userRepository){
+    UserViewModelFactory provideUserViewModelFactory(UserRepository userRepository) {
         return new UserViewModelFactory(userRepository);
     }
 
     @Singleton
     @Provides
-    ProductViewModelFactory provideProductViewModelFactory(ProductRepository productRepository){
+    ProductViewModelFactory provideProductViewModelFactory(ProductRepository productRepository) {
         return new ProductViewModelFactory(productRepository);
+    }
+
+    @Singleton
+    @Provides
+    OrderDetailViewModelFactory provideOrderDetailViewModelFactory(OrderRepository orderRepository, OrderDetailRepository orderDetailRepository) {
+        return new OrderDetailViewModelFactory(orderRepository, orderDetailRepository);
     }
 
 }

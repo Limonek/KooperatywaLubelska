@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 public class OrderDetail implements EntityWithDate {
 
-    public OrderDetail(){}
+    public OrderDetail() {}
 
     @PrimaryKey
     @Expose
@@ -29,23 +29,29 @@ public class OrderDetail implements EntityWithDate {
     @ForeignKey(entity = TradeUnit.class, parentColumns = "id", childColumns = "tradeUnitId")
     private int tradeUnitId;
 
+    @Expose
+    @ForeignKey(entity = Order.class, parentColumns = "id", childColumns = "orderId")
+    private int orderId;
+
     private Date lastRefresh;
 
+    String productName;
+
     @Ignore
-    public OrderDetail(int id,int quantity,int productId,int tradeUnitId) {
-        this.id=id;
-        this.quantity=quantity;
-        this.productId=productId;
-        this.tradeUnitId=tradeUnitId;
+    public OrderDetail(int id, int quantity, int productId, int tradeUnitId) {
+        this.id = id;
+        this.quantity = quantity;
+        this.productId = productId;
+        this.tradeUnitId = tradeUnitId;
     }
 
     @Ignore
-    public OrderDetail(int id,int quantity,int productId,int tradeUnitId,Date lastRefresh) {
-        this.id=id;
-        this.quantity=quantity;
-        this.productId=productId;
-        this.tradeUnitId=tradeUnitId;
-        this.lastRefresh=lastRefresh;
+    public OrderDetail(int id, int quantity, int productId, int tradeUnitId, Date lastRefresh) {
+        this.id = id;
+        this.quantity = quantity;
+        this.productId = productId;
+        this.tradeUnitId = tradeUnitId;
+        this.lastRefresh = lastRefresh;
     }
 
     @Override
@@ -90,7 +96,20 @@ public class OrderDetail implements EntityWithDate {
         this.tradeUnitId = tradeUnitId;
     }
 
-    @Ignore
-    Product product;
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
 
 }

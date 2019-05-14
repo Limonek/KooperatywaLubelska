@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kooperatywalubelska.R;
-import com.example.kooperatywalubelska.database.Product;
+import com.example.kooperatywalubelska.database.OrderDetail;
 
 import java.util.List;
 
-public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecyclerViewAdapter.ViewHolder> {
-    private List<Product> dataset;
+public class OrderDetailRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecyclerViewAdapter.ViewHolder> {
+    private List<OrderDetail> dataset;
     private View.OnClickListener onClickListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -26,25 +26,26 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         }
     }
 
-    public ProductRecyclerViewAdapter(List<Product> dataset) {
+    public OrderDetailRecyclerViewAdapter(List<OrderDetail> dataset) {
         this.dataset = dataset;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         TextView textView = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.product_row, parent, false);
-        ViewHolder viewHolder = new ViewHolder(textView);
-        textView.setOnClickListener(onClickListener);
+        ProductRecyclerViewAdapter.ViewHolder viewHolder = new ProductRecyclerViewAdapter.ViewHolder(textView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(dataset.get(position).getName());
+    public void onBindViewHolder(@NonNull ProductRecyclerViewAdapter.ViewHolder holder, int position) {
+        OrderDetail orderDetail = dataset.get(position);
+        String orderDetailInformation = orderDetail.getProductName() + " " + orderDetail.getQuantity();
+        holder.textView.setText(orderDetailInformation);
     }
 
-    void setList(List<Product> dataset) {
+    void setList(List<OrderDetail> dataset) {
         this.dataset = dataset;
         notifyDataSetChanged();
     }
@@ -56,4 +57,3 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         return dataset.size();
     }
 }
-
