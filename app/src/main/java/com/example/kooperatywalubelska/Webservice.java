@@ -1,6 +1,7 @@
 package com.example.kooperatywalubelska;
 
 import com.example.kooperatywalubelska.database.GsonListDecorator;
+import com.example.kooperatywalubelska.database.Prediction;
 import com.example.kooperatywalubelska.database.Product;
 import com.example.kooperatywalubelska.database.User;
 
@@ -26,5 +27,8 @@ public interface Webservice {
 
     @GET("/get_all_product_ids.php")
     Call<GsonListDecorator<Integer>> getExistingProductIds();
+
+    @GET("/predykcja.php")
+    Call<GsonListDecorator<Prediction>> getPredictionForProduct(@Query("month") String month, @Query("product_id") int productId);
 
 }

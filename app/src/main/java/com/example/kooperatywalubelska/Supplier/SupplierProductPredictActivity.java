@@ -1,6 +1,7 @@
 package com.example.kooperatywalubelska.Supplier;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,24 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import com.example.kooperatywalubelska.R;
+import com.example.kooperatywalubelska.Webservice;
+import com.example.kooperatywalubelska.database.GsonListDecorator;
+import com.example.kooperatywalubelska.database.Prediction;
 
-public class SupplierProductPredictActivity extends Fragment {
+import java.util.Date;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import dagger.android.support.DaggerFragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class SupplierProductPredictActivity extends DaggerFragment {
+    @Inject
+    Webservice webservice;
+
     String produkt = "Marchew";
     String miesiac = "maj";
     String[] rok = {"2019", "2018", "2017", "2016"};
@@ -21,9 +38,36 @@ public class SupplierProductPredictActivity extends Fragment {
     TextView miesiacPredykcji;
     TextView iloscProduktu;
 
+    List<Prediction> lista;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.supplier_product_predict_activity,container, false);
+
+        webservice.getPredictionForProduct("05",1).enqueue(
+                new Callback<GsonListDecorator<Prediction>>() {
+
+                    @Override
+                    public void onResponse(Call<GsonListDecorator<Prediction>> call, Response<GsonListDecorator<Prediction>> response) {
+                        GsonListDecorator<Prediction> entity = response.body();
+                        //entity.setLastRefresh(new Date());
+                        SupplierProductPredictActivity.this.lista=entity.getArrayList();
+
+                        Log.e("TAG", "DATA REQUEST " + call.request().toString());
+                    }
+
+                    @Override
+                    public void onFailure(Call<GsonListDecorator<Prediction>> call, Throwable t) {
+                        Log.e("TAG", "Call<Order>: " + call.toString());
+                        Log.e("TAG", "Request: " + call.request().toString());
+                        Log.e("TAG", "Request.body: " + call.request().body());
+                        Log.e("TAG", "Throwable: " + t.toString());
+                    }
+                });
+
+
+
+
 
         nextButton = v.findViewById(R.id.nextButton);
         nazwaProduktu = v.findViewById(R.id.productNameEditText);
