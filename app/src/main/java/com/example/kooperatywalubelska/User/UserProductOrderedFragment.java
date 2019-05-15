@@ -2,9 +2,11 @@ package com.example.kooperatywalubelska.User;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.lifecycle.LiveData;
@@ -13,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kooperatywalubelska.R;
+import com.example.kooperatywalubelska.Webservice;
 import com.example.kooperatywalubelska.database.Order;
 import com.example.kooperatywalubelska.database.OrderDetail;
+import com.example.kooperatywalubelska.database.OrderDetailDao;
 import com.example.kooperatywalubelska.viewmodels.OrderDetailViewModel;
 import com.example.kooperatywalubelska.viewmodels.OrderDetailViewModelFactory;
 
@@ -28,6 +32,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.support.DaggerFragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -38,8 +45,17 @@ public class UserProductOrderedFragment extends DaggerFragment {
     @BindView(R.id.lista)
     RecyclerView orderDetailsRecyclerView;
 
+    @BindView(R.id.zapiszButton)
+    Button zapiszButton;
+
     @Inject
     OrderDetailViewModelFactory orderDetailViewModelFactory;
+
+    @Inject
+    Webservice webservice;
+
+    @Inject
+    OrderDetailDao orderDetailDao;
 
     private OrderDetailViewModel orderDetailViewModel;
 
@@ -53,10 +69,10 @@ public class UserProductOrderedFragment extends DaggerFragment {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
+        orderDetailViewModel = ViewModelProviders.of(getActivity(), orderDetailViewModelFactory).get(OrderDetailViewModel.class);
+
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login", MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", 0);
-
-        orderDetailViewModel = ViewModelProviders.of(getActivity(), orderDetailViewModelFactory).get(OrderDetailViewModel.class);
 
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
@@ -72,7 +88,7 @@ public class UserProductOrderedFragment extends DaggerFragment {
         orderDetailViewModel.initOrder(date, Integer.toString(userId));
 
         orderLiveData = orderDetailViewModel.getOrder();
-        orderDetailRecyclerViewAdapter = new OrderDetailRecyclerViewAdapter(new ArrayList<>());
+        orderDetailRecyclerViewAdapter = new OrderDetailRecyclerViewAdapter(new ArrayList<>(), orderDetailDao);
         orderLiveData.observe(this, (order) -> {
             if (order != null) {
                 int orderId = order.getId();
@@ -94,6 +110,47 @@ public class UserProductOrderedFragment extends DaggerFragment {
 
         orderDetailsRecyclerView.setAdapter(orderDetailRecyclerViewAdapter);
         orderDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        zapiszButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (orderLiveData.getValue() != null) {
+                    webservice.deleteOrderOrderDetails(orderLiveData.getValue().getId()).enqueue(new Callback<Order>() {
+                        @Override
+                        public void onResponse(Call<Order> call, Response<Order> response) {
+                            Log.e("TAG", "RESPONSE DATA: " + response.body().toString());
+                            Log.e("TAG", "REQUEST DATA: " + call.request().toString());
+                        }
+
+                        @Override
+                        public void onFailure(Call<Order> call, Throwable t) {
+                            Log.e("TAG", "Call<Entity>: " + call.toString());
+                            Log.e("TAG", "Request: " + call.request().toString());
+                            Log.e("TAG", "Request.body: " + call.request().body());
+                            Log.e("TAG", "Throwable: " + t.toString());
+                        }
+                    });
+                    for (OrderDetail orderDetail : orderOrderDetailsLiveData.getValue()) {
+                        webservice.addOrderDetail(orderDetail.getOrderId(), orderDetail.getQuantity(), orderDetail.getProductId(), orderDetail.getTradeUnitId()).enqueue(new Callback<Order>() {
+                            @Override
+                            public void onResponse(Call<Order> call, Response<Order> response) {
+                                if (response.body() != null)
+                                    Log.e("TAG", "RESPONSE DATA: " + response.body().toString());
+                                Log.e("TAG", "REQUEST DATA: " + call.request().toString());
+                            }
+
+                            @Override
+                            public void onFailure(Call<Order> call, Throwable t) {
+                                Log.e("TAG", "Call<Entity>: " + call.toString());
+                                Log.e("TAG", "Request: " + call.request().toString());
+                                Log.e("TAG", "Request.body: " + call.request().body());
+                                Log.e("TAG", "Throwable: " + t.toString());
+                            }
+                        });
+                    }
+                }
+            }
+        });
 
 //        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override

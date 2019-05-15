@@ -42,4 +42,10 @@ public interface Webservice {
     @GET("/get_order.php")
     Call<Order> getOrder(@Query("date") String date, @Query("user_id") String userId);
 
+    @GET("/delete_order_order_details.php")
+    Call<Order> deleteOrderOrderDetails(@Query("order_id") int orderId);
+
+    @GET("/add_order_detail.php")
+    Call<Order> addOrderDetail(@Query("order_id") int orderId, @Query("quantity") int quantity, @Query("product_id") int productId, @Query("tradeunit_id") int tradeUnitId);
+
 }
