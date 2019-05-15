@@ -24,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import dagger.android.support.DaggerFragment;
 
-public class UserProductListFragment extends DaggerFragment{
+public class UserProductListFragment extends DaggerFragment {
 
     @BindView(R.id.typListy)
     TextView typListy;
@@ -49,16 +49,16 @@ public class UserProductListFragment extends DaggerFragment{
         productViewModel.initOrRefreshProductsList();
         allProductsLiveData = productViewModel.getAllProductsList();
 
-        productProductRecyclerViewAdapter = new ProductRecyclerViewAdapter(allProductsLiveData.getValue());
+        productProductRecyclerViewAdapter = new ProductRecyclerViewAdapter(allProductsLiveData.getValue(), null);
 
-        allProductsLiveData.observe(this, (products)->
+        allProductsLiveData.observe(this, (products) ->
                 productProductRecyclerViewAdapter.setList(products));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_view, container, false);
-        ButterKnife.bind(this,v);
+        ButterKnife.bind(this, v);
         typListy.setText("Wszystkie produkty");
 
         allProductsRecyclerView.setAdapter(productProductRecyclerViewAdapter);

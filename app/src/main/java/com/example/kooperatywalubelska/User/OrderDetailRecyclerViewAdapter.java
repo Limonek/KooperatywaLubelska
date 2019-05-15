@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kooperatywalubelska.R;
 import com.example.kooperatywalubelska.database.OrderDetail;
+import com.example.kooperatywalubelska.database.OrderDetailDao;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class OrderDetailRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecyclerViewAdapter.ViewHolder> {
     private List<OrderDetail> dataset;
     private View.OnClickListener onClickListener;
-
+    OrderDetailDao orderDetailDao;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
 
@@ -26,8 +28,9 @@ public class OrderDetailRecyclerViewAdapter extends RecyclerView.Adapter<Product
         }
     }
 
-    public OrderDetailRecyclerViewAdapter(List<OrderDetail> dataset) {
+    public OrderDetailRecyclerViewAdapter(List<OrderDetail> dataset, OrderDetailDao orderDetailDao) {
         this.dataset = dataset;
+        this.orderDetailDao = orderDetailDao;
     }
 
     @NonNull
@@ -41,6 +44,13 @@ public class OrderDetailRecyclerViewAdapter extends RecyclerView.Adapter<Product
     @Override
     public void onBindViewHolder(@NonNull ProductRecyclerViewAdapter.ViewHolder holder, int position) {
         OrderDetail orderDetail = dataset.get(position);
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Executors.newSingleThreadExecutor().execute(() -> orderDetailDao.deleteOrderDetail(orderDetail.getId()));
+                }
+            }
+        );
         String orderDetailInformation = orderDetail.getProductName() + " " + orderDetail.getQuantity();
         holder.textView.setText(orderDetailInformation);
     }

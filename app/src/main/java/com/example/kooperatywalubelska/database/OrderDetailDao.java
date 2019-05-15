@@ -25,4 +25,7 @@ public interface OrderDetailDao {
 
     @Query("DELETE FROM OrderDetail where id not in (:existingOrderDetailIds) and orderId == :orderId")
     void deleteAllOrderOrderDetailsExcept(List<Integer> existingOrderDetailIds, String orderId);
+
+    @Query("DELETE FROM OrderDetail where id = :id")
+    void deleteOrderDetail(Integer id);
 }

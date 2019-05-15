@@ -12,9 +12,10 @@ import java.util.Date;
 @Entity
 public class OrderDetail implements EntityWithDate {
 
-    public OrderDetail() {}
+    public OrderDetail() {
+    }
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @Expose
     private int id;
 
@@ -38,11 +39,11 @@ public class OrderDetail implements EntityWithDate {
     String productName;
 
     @Ignore
-    public OrderDetail(int id, int quantity, int productId, int tradeUnitId) {
-        this.id = id;
+    public OrderDetail(int quantity, int productId, int tradeUnitId, int orderId) {
         this.quantity = quantity;
         this.productId = productId;
         this.tradeUnitId = tradeUnitId;
+        this.orderId = orderId;
     }
 
     @Ignore

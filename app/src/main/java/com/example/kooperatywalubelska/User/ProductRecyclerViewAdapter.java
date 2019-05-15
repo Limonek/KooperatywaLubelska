@@ -9,13 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kooperatywalubelska.R;
+import com.example.kooperatywalubelska.database.OrderDetail;
+import com.example.kooperatywalubelska.database.OrderDetailDao;
 import com.example.kooperatywalubelska.database.Product;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecyclerViewAdapter.ViewHolder> {
     private List<Product> dataset;
     private View.OnClickListener onClickListener;
+    Integer orderId;
+    OrderDetailDao orderDetailDao;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
@@ -26,8 +31,9 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         }
     }
 
-    public ProductRecyclerViewAdapter(List<Product> dataset) {
+    public ProductRecyclerViewAdapter(List<Product> dataset, OrderDetailDao orderDetailDao) {
         this.dataset = dataset;
+        this.orderDetailDao = orderDetailDao;
     }
 
     @NonNull
@@ -35,13 +41,22 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         TextView textView = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.product_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(textView);
-        textView.setOnClickListener(onClickListener);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(dataset.get(position).getName());
+        Product product = dataset.get(position);
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (orderId != null) {
+                    OrderDetail orderDetail = new OrderDetail( 1, product.getId(), 1, orderId);
+                    Executors.newSingleThreadExecutor().execute(() -> orderDetailDao.save(orderDetail));
+                }
+            }
+        });
+        holder.textView.setText(product.getName());
     }
 
     void setList(List<Product> dataset) {
@@ -54,6 +69,14 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         if (dataset == null)
             return 0;
         return dataset.size();
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 }
 
