@@ -20,7 +20,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-public class SupplierMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import dagger.android.support.DaggerAppCompatActivity;
+
+public class SupplierMain extends DaggerAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
 
     ClipData.Item nazwa;

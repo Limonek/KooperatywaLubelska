@@ -31,7 +31,7 @@ public interface Webservice {
     Call<GsonListDecorator<Integer>> getExistingProductIds();
 
     @GET("/predykcja.php")
-    Call<GsonListDecorator<Prediction>> getPredictionForProduct(@Query("month") String month, @Query("product_id") int productId);
+    Call<GsonListDecorator<Prediction>> getPredictionForProduct(@Query("month") String month, @Query("product_id") int product_id);
 
     @GET("/get_order_order_details.php")
     Call<GsonListDecorator<OrderDetail>> getOrderOrderDetails(@Query("order_id") String orderId);
