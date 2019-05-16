@@ -73,15 +73,7 @@ public class SupplierMain extends DaggerAppCompatActivity implements NavigationV
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.nav_user:
-                i = new Intent(getApplicationContext(), UserMain.class);
-                startActivity(i);
-                drawer.closeDrawer(GravityCompat.START);
-            case R.id.nav_administrator:
-                i = new Intent(getApplicationContext(), AdministratorMain.class);
-                startActivity(i);
-                drawer.closeDrawer(GravityCompat.START);
-                break;
+
         }
 
         return true;

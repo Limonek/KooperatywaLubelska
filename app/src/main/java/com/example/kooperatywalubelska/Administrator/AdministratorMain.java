@@ -4,6 +4,7 @@ package com.example.kooperatywalubelska.Administrator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.kooperatywalubelska.R;
 import com.example.kooperatywalubelska.Supplier.SupplierMain;
@@ -22,7 +23,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class AdministratorMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-
+    TextView name;
+    TextView email;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.administrator_manu_activity);
@@ -40,6 +42,12 @@ public class AdministratorMain extends AppCompatActivity implements NavigationVi
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_container,new AdministratorMainActivity()).commit();
+
+       /* name.findViewById(R.id.nameText);
+        email.findViewById(R.id.emailTextt);
+
+        name.setText(getIntent().getStringExtra("firstName")+" "+getIntent().getStringExtra("lastName"));
+        email.setText(getIntent().getStringExtra("email"));*/
 
     }
 
@@ -68,16 +76,7 @@ public class AdministratorMain extends AppCompatActivity implements NavigationVi
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.nav_supplier:
-                i = new Intent(getApplicationContext(), SupplierMain.class);
-                startActivity(i);
-                drawer.closeDrawer(GravityCompat.START);
-                break;
-            case R.id.nav_user:
-                i = new Intent(getApplicationContext(), UserMain.class);
-                startActivity(i);
-                drawer.closeDrawer(GravityCompat.START);
-                break;
+
         }
 
         return true;

@@ -18,19 +18,4 @@
 
     </group>
 
-    <item android:title="Poziom dostepu">
-        <menu>
-            <item
-                android:id="@+id/nav_user"
-                android:title="Użytkownik" />
-            <item
-                android:id="@+id/nav_supplier"
-                android:title="Dostawca" />
-            <item
-                android:id="@+id/nav_administrator"
-                android:title="Administrator" />
-        </menu>
-    </item>
-
-
 </menu>

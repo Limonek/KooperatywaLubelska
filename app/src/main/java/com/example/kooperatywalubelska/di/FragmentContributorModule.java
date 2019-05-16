@@ -1,5 +1,6 @@
 package com.example.kooperatywalubelska.di;
 
+import com.example.kooperatywalubelska.Supplier.SupplierProductListToPredictActivity;
 import com.example.kooperatywalubelska.Supplier.SupplierProductPredictActivity;
 import com.example.kooperatywalubelska.User.UserProductFragmentsListActivity;
 import com.example.kooperatywalubelska.User.UserProductListFragment;
@@ -27,4 +28,6 @@ public abstract class FragmentContributorModule {
     @ContributesAndroidInjector
     abstract UserProductOrderedFragment contributeUserProductOrderedFragment();
 
+    @ContributesAndroidInjector
+    abstract SupplierProductListToPredictActivity contributeSupplierProductListToPredictFragment();
 }

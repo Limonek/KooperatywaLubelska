@@ -39,7 +39,7 @@ public class AdministratorUserInformationActivity extends Fragment {
         lastNameText = v.findViewById(R.id.lastNameText);
         dateOfBirthText = v.findViewById(R.id.dateOfBirthText);
         addressText = v.findViewById(R.id.addressText);
-        emailText = v.findViewById(R.id.emailText);
+        emailText = v.findViewById(R.id.emailTextt);
         phoneText = v.findViewById(R.id.phoneText);
         edytujButton = v.findViewById(R.id.edytujButton);
         nameText.setVisibility(View.VISIBLE);

@@ -18,7 +18,7 @@ public class Supplier implements EntityWithDate {
     @Expose
     private String didcription;
     @Expose
-    @ForeignKey(entity = User.class, parentColumns = "id",childColumns = "userId")
+    @ForeignKey(entity = User.class, parentColumns = "id",childColumns = "user_id")
     private int userId;
 
     private Date lastRefresh;

@@ -33,6 +33,9 @@ public interface Webservice {
     @GET("/predykcja.php")
     Call<GsonListDecorator<Prediction>> getPredictionForProduct(@Query("month") String month, @Query("product_id") int product_id);
 
+    @GET("/login_user.php")
+    Call<User> getLoginUser(@Query("login") String login, @Query("password") String password);
+
     @GET("/get_order_order_details.php")
     Call<GsonListDecorator<OrderDetail>> getOrderOrderDetails(@Query("order_id") String orderId);
 
@@ -47,5 +50,8 @@ public interface Webservice {
 
     @GET("/add_order_detail.php")
     Call<Order> addOrderDetail(@Query("order_id") int orderId, @Query("quantity") int quantity, @Query("product_id") int productId, @Query("tradeunit_id") int tradeUnitId);
+
+    @GET("/get_product_for_one_supplier.php")
+    Call<GsonListDecorator<Product>> getProductForSupplierPrediction(@Query("user_id") int user_id);
 
 }
