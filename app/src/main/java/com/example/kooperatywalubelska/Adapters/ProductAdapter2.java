@@ -39,9 +39,9 @@ public class ProductAdapter2 extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.element_list_product_activity, null);
         TextView produkt = view.findViewById(R.id.NazwaProduktuText);
-        //TextView dostawca = view.findViewById(R.id.supplierText);
+        TextView dostawca = view.findViewById(R.id.supplierText);
         produkt.setText(listaProduktów[i]);
-        //dostawca.setVisibility(View.INVISIBLE);
+        dostawca.setVisibility(View.INVISIBLE);
 
         return view;
     }

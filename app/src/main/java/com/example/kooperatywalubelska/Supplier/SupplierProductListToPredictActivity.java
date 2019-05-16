@@ -34,7 +34,7 @@ public class SupplierProductListToPredictActivity extends DaggerFragment {
     Webservice webservice;
     int user_id=1;
     private ListView lista ;
-    String[] produkty;//={"Marchewka", "Ogórki", "Rzodkiewka", "Szparagi"};
+    String[] produkty={"Marchewka", "Ogórki", "Rzodkiewka", "Szparagi"};
     int[] id_produktu;
     TextView a;
 
@@ -44,9 +44,9 @@ public class SupplierProductListToPredictActivity extends DaggerFragment {
         View v = inflater.inflate(R.layout.list_activity,container, false);
 
         lista = v.findViewById(R.id.lista);
-        //ProductAdapter2 productAdapter = new ProductAdapter2(getContext(), produkty);
-        //lista.setAdapter(productAdapter);
-        a=v.findViewById(R.id.typListy);
+        ProductAdapter2 productAdapter = new ProductAdapter2(getContext(), produkty);
+        lista.setAdapter(productAdapter);
+        /*a=v.findViewById(R.id.typListy);
 
 
         webservice.getProductForSupplierPrediction(1).enqueue(new Callback<GsonListDecorator<Product>>() {
@@ -60,7 +60,7 @@ public class SupplierProductListToPredictActivity extends DaggerFragment {
                 a.setText("nie dziala");
             }
         });
-
+*/
 
        /* webservice.getProductForSupplierPrediction(1).enqueue(new Callback<GsonListDecorator<Product>>() {
             @Override

@@ -6,6 +6,8 @@ import com.example.kooperatywalubelska.database.Order;
 import com.example.kooperatywalubelska.database.OrderDetail;
 import com.example.kooperatywalubelska.database.Product;
 import com.example.kooperatywalubelska.database.User;
+import com.example.kooperatywalubelska.database.User2;
+import com.example.kooperatywalubelska.database.UserName;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -23,6 +25,9 @@ public interface Webservice {
 
     @GET("/get_product_details.php")
     Call<Product> getProduct(@Query("user_id") String userId);
+
+    @GET("/get_user_information.php")
+    Call<User2> getUserDetail(@Query("user_id") int userId);
 
     @GET("/get_all_products.php")
     Call<GsonListDecorator<Product>> getAllProducts();
@@ -53,5 +58,8 @@ public interface Webservice {
 
     @GET("/get_product_for_one_supplier.php")
     Call<GsonListDecorator<Product>> getProductForSupplierPrediction(@Query("user_id") int user_id);
+
+    @GET("/get_name.php")
+    Call<UserName> getUserName(@Query("user_id") int user_id);
 
 }

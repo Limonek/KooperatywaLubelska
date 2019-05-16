@@ -15,7 +15,6 @@ import com.example.kooperatywalubelska.R;
 public class AdministratorUserAddActivity extends Fragment {
     EditText nameEditText;
     EditText lastNameEditText;
-    EditText dateOfBirthEditText;
     EditText addressEditText;
     EditText emailEditText;
     EditText phoneEditText;
@@ -27,7 +26,6 @@ public class AdministratorUserAddActivity extends Fragment {
         View v = inflater.inflate(R.layout.user_information_activity,container, false);
         nameEditText = v.findViewById(R.id.nameEditText);
         lastNameEditText = v.findViewById(R.id.lastNameEditText);
-        dateOfBirthEditText = v.findViewById(R.id.dateOfBirthEditText);
         addressEditText = v.findViewById(R.id.addressEditText);
         emailEditText = v.findViewById(R.id.emailEditText);
         phoneEditText = v.findViewById(R.id.phoneEditText);
@@ -35,7 +33,6 @@ public class AdministratorUserAddActivity extends Fragment {
         edytujButton = v.findViewById(R.id.edytujButton);
         nameEditText.setVisibility(View.VISIBLE);
         lastNameEditText.setVisibility(View.VISIBLE);
-        dateOfBirthEditText.setVisibility(View.VISIBLE);
         addressEditText.setVisibility(View.VISIBLE);
         emailEditText.setVisibility(View.VISIBLE);
         phoneEditText.setVisibility(View.VISIBLE);
